@@ -1,19 +1,24 @@
 package dev.kisser.rssfeed.ui
 
 import android.os.Bundle
+import android.text.TextUtils
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.webkit.URLUtil
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import dev.kisser.rssfeed.R
+import dev.kisser.rssfeed.entity.Feed
 import dev.kisser.rssfeed.ui.recyclerView.FeedListAdapter
+import dev.kisser.rssfeed.viewmodel.FeedViewModel
 import kotlinx.android.synthetic.main.activity_main3.*
 
 
-class MainView : AppCompatActivity(), AddFeedDialog.AddFeedDialogListener {
+class MainView : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,11 +49,6 @@ class MainView : AppCompatActivity(), AddFeedDialog.AddFeedDialogListener {
             return true
         }
         return false
-    }
-
-    override fun onDialogPositiveClick(url: String) {
-        Log.d(this.localClassName, url)
-
     }
 
 }

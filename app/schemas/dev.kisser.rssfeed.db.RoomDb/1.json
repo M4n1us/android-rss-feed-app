@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "17e3e57ea4049b32d76049f12e729888",
+    "identityHash": "b93085fddf9014340e3e470cb69a05f1",
     "entities": [
       {
         "tableName": "Feed",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`feedUrl` TEXT NOT NULL, `lastBuildDate` INTEGER NOT NULL, `lastEntryDate` INTEGER NOT NULL, `feedTitle` TEXT NOT NULL, PRIMARY KEY(`feedUrl`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`feedUrl` TEXT NOT NULL, `lastBuildDate` INTEGER, `lastEntryDate` INTEGER, `feedTitle` TEXT, PRIMARY KEY(`feedUrl`))",
         "fields": [
           {
             "fieldPath": "feedUrl",
@@ -18,19 +18,19 @@
             "fieldPath": "lastBuildDate",
             "columnName": "lastBuildDate",
             "affinity": "INTEGER",
-            "notNull": true
+            "notNull": false
           },
           {
             "fieldPath": "lastEntryDate",
             "columnName": "lastEntryDate",
             "affinity": "INTEGER",
-            "notNull": true
+            "notNull": false
           },
           {
             "fieldPath": "feedTitle",
             "columnName": "feedTitle",
             "affinity": "TEXT",
-            "notNull": true
+            "notNull": false
           }
         ],
         "primaryKey": {
@@ -84,7 +84,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '17e3e57ea4049b32d76049f12e729888')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'b93085fddf9014340e3e470cb69a05f1')"
     ]
   }
 }

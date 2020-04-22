@@ -4,42 +4,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="horizontal">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/feedTitle"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:layout_weight="1"
+        android:gravity="center" />
 
-        <TextView
-            android:id="@+id/feedTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center" />
+    <TextView
+        android:id="@+id/lastEntryText"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center|right"
+        android:text="@string/feed_last_entry_date"
+        android:textAlignment="textEnd" />
 
-        <TextView
-            android:id="@+id/lastEntryText"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center|right"
-            android:text="@string/feed_last_entry_date"
-            android:textAlignment="textEnd" />
+    <TextView
+        android:id="@+id/lastEntryDate"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center|left" />
 
-        <TextView
-            android:id="@+id/lastEntryDate"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center|left" />
+    <ImageButton
+        android:id="@+id/deleteItem"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        app:srcCompat="@drawable/ic_delete_black_24dp" />
 
-        <ImageButton
-            android:id="@+id/deleteItem"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/ic_delete_black_24dp" />
-    </LinearLayout>
+
 </LinearLayout>
 

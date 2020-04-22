@@ -12,12 +12,15 @@ interface FeedDao {
     @Query("SELECT * FROM feed WHERE feedUrl = :url")
     fun findByUrl(url: String): Feed
 
-    @Insert
-    fun insertAll(vararg feeds: Feed)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertAll(vararg feeds: Feed)
 
     @Update
-    fun update(feed: Feed)
+    suspend fun update(feed: Feed)
 
     @Delete
-    fun delete(feed: Feed)
+    suspend fun delete(feed: Feed)
+
+    @Query("DELETE FROM feed")
+    suspend fun deleteAll()
 }

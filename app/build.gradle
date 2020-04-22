@@ -55,7 +55,7 @@ dependencies {
     kapt "androidx.room:room-compiler:$rootProject.roomVersion"
     // optional - Kotlin Extensions and Coroutines support for Room
     implementation "androidx.room:room-ktx:$rootProject.roomVersion"
-    implementation "androidx.room:room-rxjava2:$rootProject.roomVersion"
+    //implementation "androidx.room:room-rxjava2:$rootProject.roomVersion"
 
     // Lifecycle components
     implementation "androidx.lifecycle:lifecycle-extensions:$rootProject.archLifecycleVersion"
