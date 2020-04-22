@@ -9,5 +9,6 @@ import java.util.*
 data class Feed(
     @PrimaryKey val feedUrl: String,
     @ColumnInfo(name = "lastBuildDate") val lastBuildDate: Date,
-    @ColumnInfo(name = "feedTitle") val feedTitle: String?
+    @ColumnInfo(name = "lastEntryDate") val lastEntryDate: Date,
+    @ColumnInfo(name = "feedTitle") val feedTitle: String
 )

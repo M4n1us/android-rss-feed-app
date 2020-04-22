@@ -6,7 +6,10 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import dev.kisser.rssfeed.R
+import dev.kisser.rssfeed.ui.recyclerView.FeedListAdapter
 import kotlinx.android.synthetic.main.activity_main3.*
 
 

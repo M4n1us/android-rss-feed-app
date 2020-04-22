@@ -45,13 +45,13 @@ class AddFeedDialog: DialogFragment() {
                 .setMessage(R.string.dialog_feed_url)
                 .setPositiveButton(
                     R.string.dialog_add,
-                    DialogInterface.OnClickListener { dialog, id ->
+                    DialogInterface.OnClickListener { _, _ ->
                         val url = view.findViewById<EditText>(R.id.feedUrl).text.toString()
                         listener.onDialogPositiveClick(url)
                     })
                 .setNegativeButton(
                     R.string.dialog_cancel,
-                    DialogInterface.OnClickListener { dialog, id ->
+                    DialogInterface.OnClickListener { _, _ ->
                     })
             // Create the AlertDialog object and return it
             builder.create()

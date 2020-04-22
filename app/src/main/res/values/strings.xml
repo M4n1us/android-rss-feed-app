@@ -21,4 +21,5 @@
     <string name="dialog_cancel">Cancel</string>
     <string name="dialog_add">Add</string>
     <string name="dialog_url_hint">Url</string>
+    <string name="feed_last_entry_date">Last Entry:</string>
 </resources>
