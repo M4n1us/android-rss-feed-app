@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import dev.kisser.rssfeed.R
 import dev.kisser.rssfeed.entity.Feed
 import dev.kisser.rssfeed.viewmodel.FeedViewModel
+import java.text.SimpleDateFormat
 
 class FeedListAdapter internal constructor(
     activity: FragmentActivity
@@ -38,8 +39,21 @@ class FeedListAdapter internal constructor(
     override fun onBindViewHolder(holder: FeedViewHolder, position: Int) {
         Log.d(this.javaClass.name, "onBindViewHolder: $position")
         val current = feeds[position]
-        holder.feedTitle.text = current.feedTitle
-        holder.lastEntryDate.text = current.lastEntryDate?.toString()
+        val format = SimpleDateFormat("yyyy-MM-dd\nHH:mm")
+        val domainRegex = "^(?:https?://)?(?:[^@/\\n]+@)?(?:www\\.)?([^:/?\\n]+)".toRegex()
+
+        if (current.feedTitle != null) {
+            holder.feedTitle.text = current.feedTitle
+        } else {
+            holder.feedTitle.text = domainRegex.find(current.feedUrl)?.groups?.get(1)?.value ?: "Not\navailable"
+        }
+
+        if (current.lastEntryDate != null) {
+            holder.lastEntryDate.text = format.format(current.lastEntryDate)
+        } else {
+            holder.lastEntryDate.text = "Not\navailable"
+        }
+
         holder.deleteItem.setOnClickListener {
             feedViewModel.delete(current)
         }

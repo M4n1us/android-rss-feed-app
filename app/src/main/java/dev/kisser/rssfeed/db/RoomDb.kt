@@ -40,7 +40,7 @@ abstract class RoomDb: RoomDatabase() {
                     context.applicationContext,
                     RoomDb::class.java,
                     "feed_database"
-                ).addCallback(RoomDbCallback(scope))
+                )//.addCallback(RoomDbCallback(scope))
                     .build()
                 INSTANCE = instance
                 return instance
