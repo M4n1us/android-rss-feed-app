@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import dev.kisser.rssfeed.R
 import dev.kisser.rssfeed.entity.Feed
+import dev.kisser.rssfeed.util.simpleFormat
 import dev.kisser.rssfeed.viewmodel.FeedViewModel
 import java.text.SimpleDateFormat
 
@@ -32,14 +33,12 @@ class FeedListAdapter internal constructor(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FeedViewHolder {
         val itemView = inflater.inflate(R.layout.recyclerview_feed_item, parent, false)
-        Log.d(this.javaClass.name, "Create item view")
         return FeedViewHolder(itemView)
     }
 
     override fun onBindViewHolder(holder: FeedViewHolder, position: Int) {
-        Log.d(this.javaClass.name, "onBindViewHolder: $position")
         val current = feeds[position]
-        val format = SimpleDateFormat("yyyy-MM-dd\nHH:mm")
+        // https://stackoverflow.com/questions/25703360/regular-expression-extract-subdomain-domain
         val domainRegex = "^(?:https?://)?(?:[^@/\\n]+@)?(?:www\\.)?([^:/?\\n]+)".toRegex()
 
         if (current.feedTitle != null) {
@@ -49,7 +48,7 @@ class FeedListAdapter internal constructor(
         }
 
         if (current.lastEntryDate != null) {
-            holder.lastEntryDate.text = format.format(current.lastEntryDate)
+            holder.lastEntryDate.text = simpleFormat.format(current.lastEntryDate)
         } else {
             holder.lastEntryDate.text = "Not\navailable"
         }
@@ -61,7 +60,6 @@ class FeedListAdapter internal constructor(
 
     internal fun setFeeds(feeds: List<Feed>){
         this.feeds = feeds
-        Log.d(this.javaClass.name, "Setting feeds. Size: ${this.itemCount}")
         notifyDataSetChanged()
     }
 

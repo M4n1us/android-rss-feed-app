@@ -6,7 +6,7 @@ import dev.kisser.rssfeed.entity.Feed
 
 class FeedRepository(private val feedDao: FeedDao) {
 
-    val allFeeds: LiveData<List<Feed>> = feedDao.getAll()
+    val allFeeds: LiveData<List<Feed>> = feedDao.getAllObservable()
 
     suspend fun insert(feed: Feed) {
         feedDao.insertAll(feed)

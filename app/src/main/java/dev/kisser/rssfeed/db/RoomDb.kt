@@ -40,7 +40,7 @@ abstract class RoomDb: RoomDatabase() {
                     context.applicationContext,
                     RoomDb::class.java,
                     "feed_database"
-                )//.addCallback(RoomDbCallback(scope))
+                ).addCallback(RoomDbCallback(scope))
                     .build()
                 INSTANCE = instance
                 return instance
@@ -54,19 +54,16 @@ abstract class RoomDb: RoomDatabase() {
         override fun onOpen(db: SupportSQLiteDatabase) {
             super.onOpen(db)
             INSTANCE?.let { database ->
-                scope.launch { populateDatabase(database.feedDao()) }
+                scope.launch { populateDatabase(database.unreadFeedEntryDao()) }
             }
         }
 
-        suspend fun populateDatabase(feedDao: FeedDao) {
-            feedDao.deleteAll()
+        suspend fun populateDatabase(unreadFeedEntryDao: UnreadFeedEntryDao) {
 
-            val testFeed = Feed("http://wuxiaworld.com/feed", Date(), Date(), "testfeed")
-            feedDao.insertAll(testFeed)
-            val testFeed2 = Feed("http://wuxiaworld.com/feed2", Date(), Date(), "testfeed2")
-            feedDao.insertAll(testFeed2)
+            val testEntry = UnreadFeedEntry(1, "This feed redirects to google", "https://www.google.com", Date())
 
-            Log.d(this.javaClass.name, "Initialised Feeds")
+            unreadFeedEntryDao.insertAll(testEntry)
+
         }
     }
 }

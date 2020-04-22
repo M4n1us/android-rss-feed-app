@@ -7,7 +7,10 @@ import dev.kisser.rssfeed.entity.Feed
 @Dao
 interface FeedDao {
     @Query("SELECT * FROM feed ORDER BY feedTitle ASC")
-    fun getAll(): LiveData<List<Feed>>
+    fun getAllObservable(): LiveData<List<Feed>>
+
+    @Query("SELECT * FROM feed")
+    fun getAll(): List<Feed>
 
     @Query("SELECT * FROM feed WHERE feedUrl = :url")
     fun findByUrl(url: String): Feed

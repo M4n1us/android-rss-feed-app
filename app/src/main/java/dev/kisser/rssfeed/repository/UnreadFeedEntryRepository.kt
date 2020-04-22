@@ -6,7 +6,7 @@ import dev.kisser.rssfeed.entity.UnreadFeedEntry
 
 class UnreadFeedEntryRepository(private val unreadFeedEntryDao: UnreadFeedEntryDao)  {
 
-    val allUnreadEntries: LiveData<List<UnreadFeedEntry>> = unreadFeedEntryDao.getAll()
+    val allUnreadEntries: LiveData<List<UnreadFeedEntry>> = unreadFeedEntryDao.getAllObservable()
 
     suspend fun insertAll(vararg unreadFeedEntry: UnreadFeedEntry){
         unreadFeedEntryDao.insertAll(*unreadFeedEntry)

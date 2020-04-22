@@ -35,7 +35,7 @@ class FeedManagement : Fragment() {
 
         val feedRecyclerView = view.findViewById<RecyclerView>(R.id.feedRecyclerView)
         val adapter = FeedListAdapter(requireActivity())
-        feedRecyclerView.setHasFixedSize(false)
+        //feedRecyclerView.setHasFixedSize(false)
         feedRecyclerView.adapter = adapter
         feedRecyclerView.layoutManager = LinearLayoutManager(requireActivity())
 

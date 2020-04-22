@@ -67,10 +67,10 @@ dependencies {
     api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$rootProject.coroutines"
     api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.coroutines"
 
-    // Material design
-    implementation "com.google.android.material:material:$rootProject.materialVersion"
+    //SyncWorker
+    implementation "androidx.work:work-runtime-ktx:$rootProject.workVersion"
 
-    implementation 'com.prof.rssparser:rssparser:2.1.1'
+    implementation 'com.prof.rssparser:rssparser:2.1.2'
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.1.0'
@@ -83,7 +83,6 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-
 
 }
 
