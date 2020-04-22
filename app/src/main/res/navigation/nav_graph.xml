@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/feedFragment2">
+    <fragment
+        android:id="@+id/feedFragment2"
+        android:name="dev.kisser.rssfeed.ui.FeedFragment"
+        android:label="fragment_first2"
+        tools:layout="@layout/fragment_first2" >
+        <action
+            android:id="@+id/action_feedFragment2_to_feedManagement2"
+            app:destination="@id/feedManagement2" />
+    </fragment>
+    <fragment
+        android:id="@+id/feedManagement2"
+        android:name="dev.kisser.rssfeed.ui.FeedManagement"
+        android:label="fragment_feed_management"
+        tools:layout="@layout/fragment_feed_management" >
+        <action
+            android:id="@+id/action_feedManagement2_to_feedFragment2"
+            app:destination="@id/feedFragment2" />
+    </fragment>
+</navigation>
