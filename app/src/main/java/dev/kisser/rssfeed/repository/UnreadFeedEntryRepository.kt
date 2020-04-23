@@ -8,6 +8,10 @@ class UnreadFeedEntryRepository(private val unreadFeedEntryDao: UnreadFeedEntryD
 
     val allUnreadEntries: LiveData<List<UnreadFeedEntry>> = unreadFeedEntryDao.getAllObservable()
 
+    suspend fun getAll(): List<UnreadFeedEntry>{
+        return unreadFeedEntryDao.getAll()
+    }
+
     suspend fun insertAll(vararg unreadFeedEntry: UnreadFeedEntry){
         unreadFeedEntryDao.insertAll(*unreadFeedEntry)
     }

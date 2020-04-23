@@ -15,7 +15,7 @@ class FeedViewModel(application: Application) : AndroidViewModel(application) {
     val allFeeds: LiveData<List<Feed>>
 
     init {
-        val feedDao = RoomDb.getDatabase(application, viewModelScope).feedDao()
+        val feedDao = RoomDb.getDatabase(application).feedDao()
         repository = FeedRepository(feedDao)
         allFeeds = repository.allFeeds
     }
@@ -31,4 +31,6 @@ class FeedViewModel(application: Application) : AndroidViewModel(application) {
     fun delete(feed: Feed) = viewModelScope.launch(Dispatchers.IO) {
         repository.delete(feed)
     }
+
+
 }

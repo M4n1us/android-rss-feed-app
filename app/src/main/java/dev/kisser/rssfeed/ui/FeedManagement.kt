@@ -16,6 +16,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import dev.kisser.rssfeed.R
 import dev.kisser.rssfeed.entity.Feed
 import dev.kisser.rssfeed.ui.recyclerView.FeedListAdapter
+import dev.kisser.rssfeed.util.epochStart
 import dev.kisser.rssfeed.viewmodel.FeedViewModel
 
 
@@ -56,7 +57,7 @@ class FeedManagement : Fragment() {
         Log.d(this.javaClass.name, url)
         if(URLUtil.isValidUrl(url)) {
             Log.d(this.javaClass.name, "Url is valid")
-            val feed = Feed(url, null, null, null)
+            val feed = Feed(url, epochStart, epochStart, null)
             feedViewModel.insert(feed)
         } else {
             Toast.makeText(

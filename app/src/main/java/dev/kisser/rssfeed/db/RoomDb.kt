@@ -28,8 +28,7 @@ abstract class RoomDb: RoomDatabase() {
         private var INSTANCE: RoomDb? = null
 
         fun getDatabase(
-            context: Context,
-            scope: CoroutineScope
+            context: Context
         ): RoomDb {
             val tempInstance = INSTANCE
             if (tempInstance != null) {
@@ -40,30 +39,11 @@ abstract class RoomDb: RoomDatabase() {
                     context.applicationContext,
                     RoomDb::class.java,
                     "feed_database"
-                ).addCallback(RoomDbCallback(scope))
-                    .build()
+                ).build()
                 INSTANCE = instance
                 return instance
             }
         }
     }
 
-    private class RoomDbCallback(
-        private val scope: CoroutineScope
-    ) : RoomDatabase.Callback() {
-        override fun onOpen(db: SupportSQLiteDatabase) {
-            super.onOpen(db)
-            INSTANCE?.let { database ->
-                scope.launch { populateDatabase(database.unreadFeedEntryDao()) }
-            }
-        }
-
-        suspend fun populateDatabase(unreadFeedEntryDao: UnreadFeedEntryDao) {
-
-            val testEntry = UnreadFeedEntry(1, "This feed redirects to google", "https://www.google.com", Date())
-
-            unreadFeedEntryDao.insertAll(testEntry)
-
-        }
-    }
 }

@@ -10,10 +10,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.work.Constraints
+import androidx.work.OneTimeWorkRequestBuilder
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import dev.kisser.rssfeed.R
+import dev.kisser.rssfeed.sync.SyncWorker
+import dev.kisser.rssfeed.sync.sync
 import dev.kisser.rssfeed.ui.recyclerView.FeedEntryListAdapter
 import dev.kisser.rssfeed.viewmodel.FeedEntryViewModel
+import dev.kisser.rssfeed.viewmodel.SyncViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
+import java.lang.Exception
 
 class FeedFragment : Fragment() {
     lateinit var feedEntryViewModel: FeedEntryViewModel
@@ -36,16 +46,29 @@ class FeedFragment : Fragment() {
             }
         )
 
-        view.findViewById<FloatingActionButton>(R.id.refreshFeed).setOnClickListener(this::refreshHandler)
+        val syncModel = ViewModelProvider(requireActivity()).get(SyncViewModel::class.java)
+
+        view.findViewById<FloatingActionButton>(R.id.refreshFeed).setOnClickListener {
+            Toast.makeText(
+                requireContext(),
+                R.string.toast_refresh,
+                Toast.LENGTH_SHORT).show()
+            try{
+                syncModel.syncItems()
+                Toast.makeText(
+                    requireContext(),
+                    R.string.toast_completed,
+                    Toast.LENGTH_LONG).show()
+            } catch (e: Exception) {
+                Toast.makeText(
+                    requireContext(),
+                    R.string.toast_connection_error,
+                    Toast.LENGTH_LONG).show()
+            }
+
+        }
 
         return view
-    }
-
-    private fun refreshHandler(view: View){
-        Toast.makeText(
-            requireContext(),
-            R.string.toast_refresh,
-            Toast.LENGTH_SHORT).show()
     }
 
 }

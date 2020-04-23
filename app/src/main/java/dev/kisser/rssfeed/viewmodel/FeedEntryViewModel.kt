@@ -15,7 +15,7 @@ class FeedEntryViewModel(application: Application) : AndroidViewModel(applicatio
     val allUnreadEntries: LiveData<List<UnreadFeedEntry>>
 
     init {
-        val unreadFeedEntryDao = RoomDb.getDatabase(application, viewModelScope).unreadFeedEntryDao()
+        val unreadFeedEntryDao = RoomDb.getDatabase(application).unreadFeedEntryDao()
         repository = UnreadFeedEntryRepository(unreadFeedEntryDao)
         allUnreadEntries = repository.allUnreadEntries
     }

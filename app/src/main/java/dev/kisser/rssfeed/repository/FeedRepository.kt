@@ -8,6 +8,10 @@ class FeedRepository(private val feedDao: FeedDao) {
 
     val allFeeds: LiveData<List<Feed>> = feedDao.getAllObservable()
 
+    suspend fun getAll(): List<Feed> {
+        return feedDao.getAll()
+    }
+
     suspend fun insert(feed: Feed) {
         feedDao.insertAll(feed)
     }
