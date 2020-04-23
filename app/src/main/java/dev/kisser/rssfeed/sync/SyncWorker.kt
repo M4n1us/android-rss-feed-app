@@ -1,6 +1,7 @@
 package dev.kisser.rssfeed.sync
 
 import android.content.Context
+import android.util.Log
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import com.prof.rssparser.Parser
@@ -16,7 +17,13 @@ class SyncWorker(val context: Context, workerParameters: WorkerParameters)
 
     override suspend fun doWork(): Result = coroutineScope {
 
-        sync(context)
+        try{
+            sync(context)
+        } catch (e: Exception){
+            Log.e("SyncWorker","Failed to sync: ${e.stackTrace}")
+            Result.failure()
+        }
+
 
         Result.success()
     }

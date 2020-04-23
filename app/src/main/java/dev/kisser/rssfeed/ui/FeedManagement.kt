@@ -47,7 +47,7 @@ class FeedManagement : Fragment() {
         )
 
         view.findViewById<FloatingActionButton>(R.id.addFeed).setOnClickListener{
-            val dialog = AddFeedDialog(this)
+            val dialog = AddFeedDialog(this, null)
             requireActivity().supportFragmentManager.let { it1 -> dialog.show(it1, "AddFeedDialogFragment") }
         }
         return view

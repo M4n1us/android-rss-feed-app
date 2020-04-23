@@ -1,19 +1,14 @@
 package dev.kisser.rssfeed.db
 
 import android.content.Context
-import android.util.Log
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import androidx.sqlite.db.SupportSQLiteDatabase
 import dev.kisser.rssfeed.dao.FeedDao
 import dev.kisser.rssfeed.dao.UnreadFeedEntryDao
 import dev.kisser.rssfeed.entity.Feed
 import dev.kisser.rssfeed.entity.UnreadFeedEntry
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.launch
-import java.util.*
 
 @Database(entities = [Feed::class, UnreadFeedEntry::class], version = 1, exportSchema = true)
 @TypeConverters(dev.kisser.rssfeed.db.TypeConverters::class)
