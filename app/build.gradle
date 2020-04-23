@@ -75,6 +75,9 @@ dependencies {
     //SyncWorker
     implementation "androidx.work:work-runtime-ktx:$rootProject.workVersion"
 
+    //Notifications
+    implementation "com.android.support:support-compat:28.0.0"
+
     implementation 'com.prof.rssparser:rssparser:2.1.2'
     implementation 'com.squareup.okhttp3:okhttp:4.5.0'
 

@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import dev.kisser.rssfeed.sync.showNotification
 import dev.kisser.rssfeed.sync.sync
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -18,5 +19,9 @@ class SyncViewModel(application: Application) : AndroidViewModel(application)  {
 
     fun syncItems() = viewModelScope.launch(Dispatchers.IO) {
         sync(context)
+    }
+
+    fun notifications() = viewModelScope.launch(Dispatchers.IO) {
+        showNotification(context)
     }
 }

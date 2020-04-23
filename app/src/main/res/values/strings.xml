@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">RSS Feed</string>
-    <string name="notification_channel">dev.kisser.rssfeed.notification</string>
     <string name="notification_channel_name">RSS Feed</string>
     <string name="notification_channel_description">Notifications for new RSS Feed entries</string>
     <string name="refresh_button">Refresh</string>

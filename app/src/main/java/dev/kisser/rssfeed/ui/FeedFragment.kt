@@ -59,6 +59,7 @@ class FeedFragment : Fragment() {
                     requireContext(),
                     R.string.toast_completed,
                     Toast.LENGTH_LONG).show()
+                syncModel.notifications()
             } catch (e: Exception) {
                 Toast.makeText(
                     requireContext(),
